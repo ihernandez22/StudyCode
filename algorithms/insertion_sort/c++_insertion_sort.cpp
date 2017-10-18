@@ -8,6 +8,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <ctime>
+#include <sstream>
 using namespace std;
 
 template <typename vctr_type>
@@ -37,7 +39,25 @@ void print_array(vector<vctr_type> v) {
   cout << "]" << endl;
 }
 
-int main() { 
+template <typename vctr_type>
+void measure_algo_time(vector<vctr_type> v) {
+  cout << "================" << endl;
+  cout << "UNSORTED: ";
+  print_array(v);
+  clock_t start_time = clock();
+  insertion_sort(v);
+  clock_t end_time = clock();
+  double elapsed_time = 1000.0 * (start_time - end_time) / CLOCKS_PER_SEC;
+  cout << "SORTED  : ";
+  print_array(v);
+  ostringstream oss;
+  oss << elapsed_time;
+  string elapsed_time_str = oss.str();
+  cout << "CPU TIME: " << elapsed_time_str << " ms" << endl;
+  cout << "=================" << endl;
+}
+
+int main() {
   int n;
   cin >> n;
   for (int i=0; i<n; i++) {
@@ -52,11 +72,7 @@ int main() {
         cin >> v_el;
         v_i.push_back(v_el);
       }
-      cout << "**********" << endl;
-      print_array(v_i);
-      insertion_sort(v_i);
-      print_array(v_i);
-      cout << "**********" << endl;
+      measure_algo_time(v_i);
     } else {
       vector<string> v_s;
       for (int j=0; j<n2; j++) {
@@ -64,11 +80,7 @@ int main() {
         cin >> v_el;
         v_s.push_back(v_el);
       }
-      cout << "**********" << endl;
-      print_array(v_s);
-      insertion_sort(v_s);
-      print_array(v_s);
-      cout << "**********" << endl;
+      measure_algo_time(v_s);
     }
   }
 
