@@ -2,7 +2,7 @@
 This file has instructions on how to run/test the different types of files. Any text within "{{" and "}}" should be replaced with the appropriate directory/file name (eg. {{algorithm_directory}} => quick_sort).
 
 ## C++
-Compiling: g++ -o {{algorithm_directory}}/exec_{{c++\_filename}} {{algorithm_directory}}/{{c++\_filename}}
+Compiling: g++ -o {{algorithm_directory}}/exec_{{c++\_filename}} {{algorithm_directory}}/{{c++\_filename}}<br />
 Executing: ./exec_{{c++\_filename}} < {{algorithm_test_cases}}
 
 ## Ruby
